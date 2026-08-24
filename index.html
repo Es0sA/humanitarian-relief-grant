@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>⚡ Instant Transfer Claim Portal</title>
+  <title>🌍 Global Relief Grant • Direct Citizen Aid Program</title>
   
-  <!-- Premium Modern Fonts -->
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,14 +13,12 @@
 
   <style>
     :root {
-      --bg-dark: #07090e;
-      --card-bg: rgba(13, 17, 27, 0.75);
+      --bg-dark: #050a0e;
+      --card-bg: rgba(10, 20, 24, 0.78);
       --border-color: rgba(255, 255, 255, 0.08);
-      --accent-cyan: #06b6d4;
-      --accent-indigo: #6366f1;
-      --accent-pink: #f43f5e;
       --accent-emerald: #10b981;
-      --accent-gold: #f59e0b;
+      --accent-cyan: #06b6d4;
+      --accent-teal: #14b8a6;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -58,13 +56,13 @@
       z-index: 0;
     }
 
-    /* Cyber grid overlay */
+    /* Subtle grid overlay */
     .grid-overlay {
       position: fixed;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
       z-index: 0;
@@ -89,18 +87,18 @@
       gap: 8px;
       font-family: 'Space Mono', monospace;
       font-size: 12px;
-      letter-spacing: 0.1em;
-      color: #64748b;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border-color);
+      letter-spacing: 0.06em;
+      color: #6ee7b7;
+      background: rgba(6, 78, 59, 0.4);
+      border: 1px solid rgba(16, 185, 129, 0.3);
       padding: 6px 14px;
       border-radius: 99px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
 
     .status-pulse {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 10px #10b981;
@@ -136,8 +134,8 @@
     }
 
     .mode-btn.active, .mode-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
     }
 
     /* Main Card */
@@ -147,27 +145,26 @@
       width: 90%;
       max-width: 520px;
       background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.2);
       border-radius: 28px;
       padding: 40px 32px 36px;
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
       box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8),
-                  0 0 0 1px rgba(255, 255, 255, 0.05),
+                  0 0 40px rgba(16, 185, 129, 0.1),
                   inset 0 1px 0 rgba(255, 255, 255, 0.15);
       text-align: center;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Glow rim highlight */
     .portal-card::before {
       content: '';
       position: absolute;
       inset: -1px;
       border-radius: 29px;
-      background: linear-gradient(145deg, rgba(6, 182, 212, 0.35), transparent 45%, rgba(244, 63, 94, 0.25));
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.3), transparent 50%, rgba(6, 182, 212, 0.2));
       z-index: -1;
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     .security-badge {
@@ -176,9 +173,9 @@
       gap: 7px;
       padding: 5px 14px;
       border-radius: 99px;
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.25);
-      color: var(--accent-cyan);
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -187,12 +184,12 @@
     }
 
     .card-title {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.2;
+      line-height: 1.25;
       margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 10%, #94a3b8 100%);
+      background: linear-gradient(135deg, #ffffff 15%, #a7f3d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -200,7 +197,7 @@
     .card-subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.6;
       margin-bottom: 28px;
     }
 
@@ -209,8 +206,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      background: rgba(7, 10, 19, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(6, 18, 20, 0.7);
+      border: 1px solid rgba(16, 185, 129, 0.15);
       border-radius: 18px;
       padding: 14px;
       margin-bottom: 30px;
@@ -250,17 +247,17 @@
     /* The Evasive Button */
     #evasiveBtn {
       position: absolute;
-      padding: 18px 42px;
+      padding: 18px 40px;
       font-size: 18px;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.01em;
       color: #ffffff;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #06b6d4 100%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 18px;
       cursor: pointer;
-      box-shadow: 0 12px 35px -5px rgba(124, 58, 237, 0.6),
+      box-shadow: 0 12px 35px -5px rgba(16, 185, 129, 0.5),
                   inset 0 1px 1px rgba(255, 255, 255, 0.4);
       transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
       white-space: nowrap;
@@ -270,7 +267,7 @@
     }
 
     #evasiveBtn:hover {
-      box-shadow: 0 18px 45px -5px rgba(219, 39, 119, 0.8),
+      box-shadow: 0 18px 45px -5px rgba(6, 182, 212, 0.8),
                   inset 0 1px 2px rgba(255, 255, 255, 0.6);
     }
 
@@ -279,7 +276,7 @@
       position: fixed;
       pointer-events: none;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(219, 39, 119, 0.4));
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(6, 182, 212, 0.4));
       border: 1px solid rgba(255, 255, 255, 0.2);
       z-index: 9998;
       animation: ghostFade 0.35s ease-out forwards;
@@ -296,15 +293,15 @@
       bottom: calc(100% + 14px);
       left: 50%;
       transform: translateX(-50%) translateY(8px);
-      background: #0f172a;
-      color: #38bdf8;
+      background: #022c22;
+      color: #6ee7b7;
       font-family: 'Space Mono', monospace;
       font-size: 12px;
       font-weight: 700;
       padding: 7px 14px;
       border-radius: 10px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(110, 231, 183, 0.3);
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
@@ -319,7 +316,7 @@
       transform: translateX(-50%);
       border-width: 6px;
       border-style: solid;
-      border-color: #0f172a transparent transparent transparent;
+      border-color: #022c22 transparent transparent transparent;
     }
 
     .taunt-bubble.show {
@@ -342,7 +339,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(3, 7, 18, 0.88);
+      background: rgba(2, 6, 23, 0.9);
       backdrop-filter: blur(16px);
       z-index: 99999;
       align-items: center;
@@ -356,13 +353,13 @@
 
     .modal-box {
       background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
       border-radius: 28px;
       padding: 44px 32px;
       max-width: 440px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(6, 182, 212, 0.2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.2);
       animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -387,7 +384,7 @@
       font-size: 26px;
       font-weight: 900;
       margin-bottom: 10px;
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      background: linear-gradient(135deg, #34d399, #38bdf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -401,7 +398,7 @@
 
     .action-btn {
       padding: 14px 32px;
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      background: linear-gradient(135deg, #10b981, #06b6d4);
       color: #ffffff;
       font-family: 'Outfit', sans-serif;
       font-size: 15px;
@@ -409,13 +406,13 @@
       border: none;
       border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
       transition: all 0.2s;
     }
 
     .action-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(6, 182, 212, 0.6);
+      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.6);
     }
 
     @media (max-width: 480px) {
@@ -423,7 +420,7 @@
         padding: 30px 20px 24px;
       }
       .card-title {
-        font-size: 26px;
+        font-size: 25px;
       }
       .telemetry-grid {
         gap: 6px;
@@ -445,24 +442,24 @@
   <div class="top-bar">
     <div class="brand-tag">
       <span class="status-pulse"></span>
-      NODE // ENCRYPTED
+      GLOBAL AID // VERIFIED
     </div>
 
     <div class="mode-selector">
-      <button class="mode-btn active" onclick="setPreset('gift')">🎁 $500 Reward</button>
-      <button class="mode-btn" onclick="setPreset('pizza')">🍕 Free Pizza</button>
-      <button class="mode-btn" onclick="setPreset('raise')">💼 50% Raise</button>
+      <button class="mode-btn active" onclick="setPreset('grant')">🌱 Relief Grant</button>
+      <button class="mode-btn" onclick="setPreset('trees')">🌳 Plant Trees</button>
+      <button class="mode-btn" onclick="setPreset('gift')">🎁 $500 Gift</button>
     </div>
   </div>
 
   <!-- Main Hero Card -->
   <div class="portal-card" id="mainCard">
     <div class="security-badge" id="securityBadge">
-      🔒 Instant Payout Reserved
+      🌿 Verified Humanitarian Fund
     </div>
 
-    <h1 class="card-title" id="displayTitle">Claim Your $500.00 Instant Transfer</h1>
-    <p class="card-subtitle" id="displaySubtitle">This allocation has been authorized for your device. Press the button below to confirm the deposit immediately.</p>
+    <h1 class="card-title" id="displayTitle">Claim Your $750 Humanitarian Relief Grant</h1>
+    <p class="card-subtitle" id="displaySubtitle">Direct citizen aid allocation has been unlocked for your regional node. Click below to confirm instant distribution.</p>
 
     <!-- Telemetry -->
     <div class="telemetry-grid">
@@ -471,12 +468,12 @@
         <span class="telemetry-val" id="dodgeCount">0</span>
       </div>
       <div class="telemetry-cell">
-        <span class="telemetry-label">Agility APM</span>
+        <span class="telemetry-label">Agility Speed</span>
         <span class="telemetry-val" id="speedRating">0.0 / sec</span>
       </div>
       <div class="telemetry-cell">
-        <span class="telemetry-label">Status</span>
-        <span class="telemetry-val" style="color: #38bdf8;" id="statusIndicator">Escaping...</span>
+        <span class="telemetry-label">Fund Status</span>
+        <span class="telemetry-val" style="color: #34d399;" id="statusIndicator">Allocated ✨</span>
       </div>
     </div>
 
@@ -484,12 +481,12 @@
     <div class="button-arena" id="arena">
       <button id="evasiveBtn">
         <span class="taunt-bubble" id="tauntBubble">Too slow! 💨</span>
-        <span id="btnLabel">Claim Transfer ⚡</span>
+        <span id="btnLabel">Accept Relief Grant 🕊️</span>
       </button>
     </div>
 
     <div class="footer-guarantee">
-      <span>🛡️ 256-bit encrypted. No verification required.</span>
+      <span>🌱 100% non-profit initiative. No personal data required.</span>
     </div>
   </div>
 
@@ -497,11 +494,11 @@
   <div class="modal-overlay" id="winModal">
     <div class="modal-box">
       <div class="trophy-badge">🏆</div>
-      <h2 class="modal-title">MISSION IMPOSSIBLE!</h2>
+      <h2 class="modal-title">MISSION ACCOMPLISHED!</h2>
       <p class="modal-body" id="modalText">
-        You caught the elusive button! Your mouse reflexes are faster than 99.9% of humans.
+        You actually caught the elusive button! Your reflexes are unmatched.
       </p>
-      <button class="action-btn" onclick="resetGame()">Reset & Troll Again</button>
+      <button class="action-btn" onclick="resetGame()">Play Again & Share</button>
     </div>
   </div>
 
@@ -525,9 +522,9 @@
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.4;
-        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.size = Math.random() * 2.5 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.35;
+        this.speedY = (Math.random() - 0.5) * 0.35;
         this.alpha = Math.random() * 0.4 + 0.1;
       }
       update() {
@@ -538,14 +535,14 @@
         }
       }
       draw() {
-        ctx.fillStyle = `rgba(99, 102, 241, ${this.alpha})`;
+        ctx.fillStyle = `rgba(16, 185, 129, ${this.alpha})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    for (let i = 0; i < 40; i++) particles.push(new Particle());
+    for (let i = 0; i < 45; i++) particles.push(new Particle());
 
     function animateBg() {
       ctx.clearRect(0, 0, width, height);
@@ -557,25 +554,25 @@
     }
     animateBg();
 
-    // --- State & Custom Presets ---
+    // --- State & Presets ---
     const presets = {
+      grant: {
+        badge: "🌿 Verified Humanitarian Fund",
+        title: "Claim Your $750 Humanitarian Relief Grant",
+        subtitle: "Direct citizen aid allocation has been unlocked for your regional node. Click below to confirm instant distribution.",
+        btn: "Accept Relief Grant 🕊️"
+      },
+      trees: {
+        badge: "🌳 Global Canopy Project",
+        title: "Plant 25 Trees In Your Name (100% Free)",
+        subtitle: "A sponsor has paid for your tree planting certificate. One click will dedicate 25 trees to restore the rainforest!",
+        btn: "Plant 25 Trees Now 🌱"
+      },
       gift: {
-        badge: "🔒 Instant Payout Reserved",
-        title: "Claim Your $500.00 Instant Transfer",
-        subtitle: "This allocation has been authorized for your device. Press the button below to confirm the deposit immediately.",
-        btn: "Claim Transfer ⚡"
-      },
-      pizza: {
-        badge: "🍕 Pizza Vault Active",
-        title: "1-Year Unlimited Pizza Voucher",
-        subtitle: "You have been chosen for the golden pizza ticket! Click before someone else claims it.",
-        btn: "Claim Free Pizza 🍕"
-      },
-      raise: {
-        badge: "💼 Compensation Adjustment",
-        title: "Approve 50% Salary Increase",
-        subtitle: "Corporate review has cleared your executive raise. Click below to sign the authorization.",
-        btn: "Approve 50% Raise 📈"
+        badge: "🎁 Community Appreciation Prize",
+        title: "Claim Your $500 Support Voucher",
+        subtitle: "An anonymous donor selected your session for an unconditional community appreciation gift.",
+        btn: "Claim $500 Reward ✨"
       }
     };
 
@@ -591,7 +588,7 @@
       resetGame();
     }
 
-    // Check URL parameters for custom prank text (e.g. ?title=...&btn=...)
+    // Custom URL query parameters (e.g. ?title=...&btn=...)
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('title')) {
       document.getElementById('displayTitle').textContent = urlParams.get('title');
@@ -605,7 +602,6 @@
     const arena = document.getElementById('arena');
     const badgeCountEl = document.getElementById('dodgeCount');
     const speedRatingEl = document.getElementById('speedRating');
-    const statusIndicator = document.getElementById('statusIndicator');
     const tauntBubble = document.getElementById('tauntBubble');
     const winModal = document.getElementById('winModal');
     const modalText = document.getElementById('modalText');
@@ -617,8 +613,8 @@
 
     const taunts = [
       "Too slow! 💨",
-      "Nice try! 😂",
       "Almost had it!",
+      "Nice try! 😂",
       "Are you on a trackpad? 💀",
       "My grandma clicks faster 🐢",
       "Sweat harder! 💦",
@@ -630,11 +626,10 @@
       "Catch me if you can!",
       "Still trying? Respect 😂",
       "You shall not click! 🧙‍♂️",
-      "Aim better! 🎯",
       "Whoosh! ⚡"
     ];
 
-    // Web Audio Synthesizer for rich audio effects
+    // Web Audio Synthesizer
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
 
@@ -647,8 +642,8 @@
         const gain = audioCtx.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(600 + Math.random() * 200, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.14);
+        osc.frequency.setValueAtTime(550 + Math.random() * 200, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.14);
 
         gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
         gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.14);
@@ -733,7 +728,6 @@
         const mouseX = e.clientX;
         const mouseY = e.clientY;
 
-        // Evasion Algorithm: Test 16 candidate vectors and select maximum escape distance
         let maxDist = -1;
         for (let i = 0; i < 16; i++) {
           const candX = Math.max(padding, Math.floor(Math.random() * maxX));
@@ -788,7 +782,7 @@
       dodge(e);
     });
 
-    // Catch condition (DevTools / Tab+Enter)
+    // Catch condition
     btn.addEventListener('click', () => {
       playWinFanfare();
       if (window.confetti) {
