@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>🌍 Global Relief Grant • Direct Citizen Aid Program</title>
   
   <!-- Premium Typography -->
@@ -13,12 +13,10 @@
 
   <style>
     :root {
-      --bg-dark: #050a0e;
-      --card-bg: rgba(10, 20, 24, 0.78);
-      --border-color: rgba(255, 255, 255, 0.08);
+      --bg-dark: #04080c;
+      --card-bg: rgba(9, 18, 24, 0.85);
       --accent-emerald: #10b981;
       --accent-cyan: #06b6d4;
-      --accent-teal: #14b8a6;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -29,20 +27,28 @@
       padding: 0;
       user-select: none;
       -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      min-height: 100vh;
-      width: 100vw;
+    html, body {
+      position: fixed;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      overscroll-behavior: none;
+      touch-action: none;
       font-family: 'Outfit', -apple-system, sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
+      padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 16px) 16px;
     }
 
     /* Ambient Canvas Background */
@@ -63,7 +69,7 @@
       background-image: 
         linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background-size: 32px 32px;
       pointer-events: none;
       z-index: 0;
     }
@@ -71,9 +77,9 @@
     /* Top Controls Bar */
     .top-bar {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      right: 20px;
+      top: max(12px, env(safe-area-inset-top));
+      left: 12px;
+      right: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -84,24 +90,24 @@
     .brand-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.06em;
+      font-size: 11px;
+      letter-spacing: 0.04em;
       color: #6ee7b7;
-      background: rgba(6, 78, 59, 0.4);
+      background: rgba(6, 78, 59, 0.45);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 99px;
       backdrop-filter: blur(10px);
     }
 
     .status-pulse {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #10b981;
-      box-shadow: 0 0 10px #10b981;
+      box-shadow: 0 0 8px #10b981;
       animation: pulseDot 2s infinite;
     }
 
@@ -112,11 +118,11 @@
 
     .mode-selector {
       display: flex;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.85);
-      padding: 4px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.88);
+      padding: 3px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(8px);
     }
 
@@ -125,33 +131,33 @@
       border: none;
       color: #94a3b8;
       font-family: 'Outfit', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 5px 9px;
+      border-radius: 7px;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .mode-btn.active, .mode-btn:hover {
-      background: rgba(16, 185, 129, 0.2);
+      background: rgba(16, 185, 129, 0.25);
       color: #6ee7b7;
     }
 
-    /* Main Card */
+    /* Main Hero Card */
     .portal-card {
       position: relative;
       z-index: 10;
-      width: 90%;
-      max-width: 520px;
+      width: 100%;
+      max-width: 440px;
       background: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      border-radius: 28px;
-      padding: 40px 32px 36px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 24px;
+      padding: 28px 20px 24px;
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
-      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8),
-                  0 0 40px rgba(16, 185, 129, 0.1),
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8),
+                  0 0 35px rgba(16, 185, 129, 0.12),
                   inset 0 1px 0 rgba(255, 255, 255, 0.15);
       text-align: center;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -161,7 +167,7 @@
       content: '';
       position: absolute;
       inset: -1px;
-      border-radius: 29px;
+      border-radius: 25px;
       background: linear-gradient(145deg, rgba(16, 185, 129, 0.3), transparent 50%, rgba(6, 182, 212, 0.2));
       z-index: -1;
       opacity: 0.7;
@@ -170,105 +176,113 @@
     .security-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 5px 14px;
+      gap: 6px;
+      padding: 4px 12px;
       border-radius: 99px;
       background: rgba(16, 185, 129, 0.15);
       border: 1px solid rgba(16, 185, 129, 0.35);
       color: #34d399;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .card-title {
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       line-height: 1.25;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 15%, #a7f3d0 100%);
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 20%, #a7f3d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .card-subtitle {
-      font-size: 15px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 28px;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     /* Live Telemetry Grid */
     .telemetry-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      background: rgba(6, 18, 20, 0.7);
+      gap: 8px;
+      background: rgba(6, 18, 20, 0.75);
       border: 1px solid rgba(16, 185, 129, 0.15);
-      border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 30px;
+      border-radius: 14px;
+      padding: 10px 8px;
+      margin-bottom: 22px;
     }
 
     .telemetry-cell {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .telemetry-label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
+      font-size: 9px;
       color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .telemetry-val {
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 800;
       color: #f1f5f9;
-      transition: color 0.2s;
     }
 
     /* The Arena where the button starts */
     .button-arena {
       position: relative;
-      height: 74px;
+      height: 70px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* The Evasive Button */
+    /* The Evasive Button - Shape Shifter & Jitter */
     #evasiveBtn {
       position: absolute;
-      padding: 18px 40px;
-      font-size: 18px;
+      padding: 16px 36px;
+      font-size: 17px;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.01em;
       color: #ffffff;
       background: linear-gradient(135deg, #059669 0%, #10b981 50%, #06b6d4 100%);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 18px;
       cursor: pointer;
-      box-shadow: 0 12px 35px -5px rgba(16, 185, 129, 0.5),
+      box-shadow: 0 10px 30px -4px rgba(16, 185, 129, 0.55),
                   inset 0 1px 1px rgba(255, 255, 255, 0.4);
-      transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+      transition: all 0.16s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       white-space: nowrap;
       z-index: 9999;
       touch-action: none;
       outline: none;
+      will-change: transform, left, top;
     }
 
-    #evasiveBtn:hover {
-      box-shadow: 0 18px 45px -5px rgba(6, 182, 212, 0.8),
-                  inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    /* Annoyance Vibrations */
+    .vibrate {
+      animation: glitchJitter 0.25s infinite linear;
+    }
+
+    @keyframes glitchJitter {
+      0% { transform: translate(0, 0) scale(var(--btn-scale, 1)) rotate(var(--btn-rot, 0deg)); }
+      25% { transform: translate(-3px, 2px) scale(var(--btn-scale, 1)) rotate(var(--btn-rot, 0deg)); }
+      50% { transform: translate(3px, -2px) scale(var(--btn-scale, 1)) rotate(var(--btn-rot, 0deg)); }
+      75% { transform: translate(-2px, -2px) scale(var(--btn-scale, 1)) rotate(var(--btn-rot, 0deg)); }
+      100% { transform: translate(0, 0) scale(var(--btn-scale, 1)) rotate(var(--btn-rot, 0deg)); }
     }
 
     /* Ghost Dash Trail Effect */
@@ -276,36 +290,36 @@
       position: fixed;
       pointer-events: none;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(6, 182, 212, 0.4));
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.45), rgba(6, 182, 212, 0.45));
+      border: 1px solid rgba(255, 255, 255, 0.25);
       z-index: 9998;
-      animation: ghostFade 0.35s ease-out forwards;
+      animation: ghostFade 0.3s ease-out forwards;
     }
 
     @keyframes ghostFade {
-      0% { opacity: 0.8; transform: scale(1); }
-      100% { opacity: 0; transform: scale(1.15); filter: blur(4px); }
+      0% { opacity: 0.9; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.2); filter: blur(4px); }
     }
 
     /* Speech bubble attached to button */
     .taunt-bubble {
       position: absolute;
-      bottom: calc(100% + 14px);
+      bottom: calc(100% + 12px);
       left: 50%;
-      transform: translateX(-50%) translateY(8px);
+      transform: translateX(-50%) translateY(6px);
       background: #022c22;
       color: #6ee7b7;
       font-family: 'Space Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 7px 14px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(110, 231, 183, 0.3);
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(110, 231, 183, 0.35);
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.18s ease;
     }
 
     .taunt-bubble::after {
@@ -314,7 +328,7 @@
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border-width: 6px;
+      border-width: 5px;
       border-style: solid;
       border-color: #022c22 transparent transparent transparent;
     }
@@ -325,13 +339,13 @@
     }
 
     .footer-guarantee {
-      margin-top: 24px;
-      font-size: 12px;
+      margin-top: 18px;
+      font-size: 11.5px;
       color: #64748b;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     /* Victory Modal */
@@ -339,7 +353,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 23, 0.9);
+      background: rgba(2, 6, 23, 0.92);
       backdrop-filter: blur(16px);
       z-index: 99999;
       align-items: center;
@@ -354,12 +368,12 @@
     .modal-box {
       background: #0f172a;
       border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 28px;
-      padding: 44px 32px;
-      max-width: 440px;
+      border-radius: 24px;
+      padding: 36px 24px;
+      max-width: 380px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.25);
       animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -369,65 +383,55 @@
     }
 
     .trophy-badge {
-      font-size: 54px;
-      margin-bottom: 16px;
+      font-size: 46px;
+      margin-bottom: 12px;
       display: inline-block;
-      animation: bounceTrophy 1s infinite alternate ease-in-out;
-    }
-
-    @keyframes bounceTrophy {
-      from { transform: translateY(0); }
-      to { transform: translateY(-8px); }
     }
 
     .modal-title {
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       background: linear-gradient(135deg, #34d399, #38bdf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .modal-body {
-      font-size: 15px;
+      font-size: 14px;
       color: #94a3b8;
-      line-height: 1.6;
-      margin-bottom: 28px;
+      line-height: 1.55;
+      margin-bottom: 24px;
     }
 
     .action-btn {
-      padding: 14px 32px;
+      padding: 13px 28px;
       background: linear-gradient(135deg, #10b981, #06b6d4);
       color: #ffffff;
       font-family: 'Outfit', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       border: none;
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
-      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
     }
 
-    .action-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.6);
-    }
-
-    @media (max-width: 480px) {
+    @media (max-height: 650px) {
       .portal-card {
-        padding: 30px 20px 24px;
+        padding: 20px 16px 16px;
       }
       .card-title {
-        font-size: 25px;
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+      .card-subtitle {
+        font-size: 12px;
+        margin-bottom: 12px;
       }
       .telemetry-grid {
-        gap: 6px;
-        padding: 10px;
-      }
-      .telemetry-val {
-        font-size: 14px;
+        margin-bottom: 14px;
+        padding: 6px;
       }
     }
   </style>
@@ -446,9 +450,9 @@
     </div>
 
     <div class="mode-selector">
-      <button class="mode-btn active" onclick="setPreset('grant')">🌱 Relief Grant</button>
-      <button class="mode-btn" onclick="setPreset('trees')">🌳 Plant Trees</button>
-      <button class="mode-btn" onclick="setPreset('gift')">🎁 $500 Gift</button>
+      <button class="mode-btn active" onclick="setPreset('grant')">🌱 Relief</button>
+      <button class="mode-btn" onclick="setPreset('trees')">🌳 Trees</button>
+      <button class="mode-btn" onclick="setPreset('gift')">🎁 $500</button>
     </div>
   </div>
 
@@ -459,21 +463,21 @@
     </div>
 
     <h1 class="card-title" id="displayTitle">Claim Your $750 Humanitarian Relief Grant</h1>
-    <p class="card-subtitle" id="displaySubtitle">Direct citizen aid allocation has been unlocked for your regional node. Click below to confirm instant distribution.</p>
+    <p class="card-subtitle" id="displaySubtitle">Direct citizen aid allocation has been unlocked for your region. Tap below to confirm instant distribution.</p>
 
     <!-- Telemetry -->
     <div class="telemetry-grid">
       <div class="telemetry-cell">
-        <span class="telemetry-label">Attempts</span>
+        <span class="telemetry-label">Dodges</span>
         <span class="telemetry-val" id="dodgeCount">0</span>
       </div>
       <div class="telemetry-cell">
-        <span class="telemetry-label">Agility Speed</span>
-        <span class="telemetry-val" id="speedRating">0.0 / sec</span>
+        <span class="telemetry-label">Speed</span>
+        <span class="telemetry-val" id="speedRating">0.0 / s</span>
       </div>
       <div class="telemetry-cell">
-        <span class="telemetry-label">Fund Status</span>
-        <span class="telemetry-val" style="color: #34d399;" id="statusIndicator">Allocated ✨</span>
+        <span class="telemetry-label">Status</span>
+        <span class="telemetry-val" style="color: #34d399;" id="statusIndicator">Ready ✨</span>
       </div>
     </div>
 
@@ -486,7 +490,7 @@
     </div>
 
     <div class="footer-guarantee">
-      <span>🌱 100% non-profit initiative. No personal data required.</span>
+      <span>🌱 100% non-profit. Instant direct transfer.</span>
     </div>
   </div>
 
@@ -496,7 +500,7 @@
       <div class="trophy-badge">🏆</div>
       <h2 class="modal-title">MISSION ACCOMPLISHED!</h2>
       <p class="modal-body" id="modalText">
-        You actually caught the elusive button! Your reflexes are unmatched.
+        You actually caught the elusive button! Your reflexes are legendary.
       </p>
       <button class="action-btn" onclick="resetGame()">Play Again & Share</button>
     </div>
@@ -513,6 +517,7 @@
       height = canvas.height = window.innerHeight;
     }
     window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 200));
     resizeCanvas();
 
     class Particle {
@@ -522,10 +527,10 @@
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 2.5 + 0.5;
+        this.size = Math.random() * 2.2 + 0.5;
         this.speedX = (Math.random() - 0.5) * 0.35;
         this.speedY = (Math.random() - 0.5) * 0.35;
-        this.alpha = Math.random() * 0.4 + 0.1;
+        this.alpha = Math.random() * 0.35 + 0.1;
       }
       update() {
         this.x += this.speedX;
@@ -542,7 +547,7 @@
       }
     }
 
-    for (let i = 0; i < 45; i++) particles.push(new Particle());
+    for (let i = 0; i < 35; i++) particles.push(new Particle());
 
     function animateBg() {
       ctx.clearRect(0, 0, width, height);
@@ -559,13 +564,13 @@
       grant: {
         badge: "🌿 Verified Humanitarian Fund",
         title: "Claim Your $750 Humanitarian Relief Grant",
-        subtitle: "Direct citizen aid allocation has been unlocked for your regional node. Click below to confirm instant distribution.",
+        subtitle: "Direct citizen aid allocation has been unlocked for your region. Tap below to confirm instant distribution.",
         btn: "Accept Relief Grant 🕊️"
       },
       trees: {
         badge: "🌳 Global Canopy Project",
-        title: "Plant 25 Trees In Your Name (100% Free)",
-        subtitle: "A sponsor has paid for your tree planting certificate. One click will dedicate 25 trees to restore the rainforest!",
+        title: "Plant 25 Trees In Your Name (Free)",
+        subtitle: "A sponsor paid for your certificate. One tap dedicates 25 trees to restore the rainforest!",
         btn: "Plant 25 Trees Now 🌱"
       },
       gift: {
@@ -588,7 +593,7 @@
       resetGame();
     }
 
-    // Custom URL query parameters (e.g. ?title=...&btn=...)
+    // Custom URL query parameters
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('title')) {
       document.getElementById('displayTitle').textContent = urlParams.get('title');
@@ -597,7 +602,7 @@
       document.getElementById('btnLabel').textContent = urlParams.get('btn');
     }
 
-    // --- Button Evasion Engine ---
+    // --- Button Evasion & Annoyance Engine ---
     const btn = document.getElementById('evasiveBtn');
     const arena = document.getElementById('arena');
     const badgeCountEl = document.getElementById('dodgeCount');
@@ -614,19 +619,32 @@
     const taunts = [
       "Too slow! 💨",
       "Almost had it!",
-      "Nice try! 😂",
-      "Are you on a trackpad? 💀",
+      "Nice thumb aim! 👍",
+      "Are you on a cracked screen? 📱",
+      "Two hands won't help! 🖐️",
       "My grandma clicks faster 🐢",
       "Sweat harder! 💦",
       "Error 404: Reflexes not found 🤖",
-      "Is that your final speed? 🚀",
+      "Smudge on your screen? 😂",
       "Getting tired yet? 😴",
       "Nope, not today!",
       "Lag is not an excuse! 📶",
       "Catch me if you can!",
-      "Still trying? Respect 😂",
-      "You shall not click! 🧙‍♂️",
+      "Double tap won't work! 🧙‍♂️",
+      "Screen protector lag? 💀",
       "Whoosh! ⚡"
+    ];
+
+    // Annoying shape/size alterations
+    const shapes = [
+      { scale: 0.75, rot: 15, radius: '25px', padding: '12px 24px' },
+      { scale: 1.15, rot: -20, radius: '10px', padding: '18px 40px' },
+      { scale: 0.65, rot: 45, radius: '50px', padding: '10px 20px' },
+      { scale: 0.9, rot: -35, radius: '16px', padding: '14px 30px' },
+      { scale: 1.25, rot: 10, radius: '8px', padding: '20px 45px' },
+      { scale: 0.6, rot: 90, radius: '30px', padding: '10px 18px' }, // Vertical pill!
+      { scale: 1.0, rot: -180, radius: '18px', padding: '16px 36px' }, // Upside down!
+      { scale: 0.7, rot: -75, radius: '40px', padding: '12px 22px' }
     ];
 
     // Web Audio Synthesizer
@@ -642,17 +660,17 @@
         const gain = audioCtx.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(550 + Math.random() * 200, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.14);
+        osc.frequency.setValueAtTime(550 + Math.random() * 300, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.12);
 
         gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.14);
+        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
 
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.14);
+        osc.stop(audioCtx.currentTime + 0.12);
       } catch (e) {}
     }
 
@@ -686,7 +704,7 @@
       ghost.style.height = `${rect.height}px`;
       ghost.style.transform = btn.style.transform;
       document.body.appendChild(ghost);
-      setTimeout(() => ghost.remove(), 350);
+      setTimeout(() => ghost.remove(), 300);
     }
 
     function triggerTaunt() {
@@ -696,17 +714,20 @@
       clearTimeout(tauntTimer);
       tauntTimer = setTimeout(() => {
         tauntBubble.classList.remove('show');
-      }, 1200);
+      }, 1100);
     }
 
     function dodge(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (e && e.stopPropagation) e.stopPropagation();
+
       dodges++;
       badgeCountEl.textContent = dodges;
 
       const now = Date.now();
-      const apm = (1000 / Math.max(100, now - lastTime)).toFixed(1);
+      const apm = (1000 / Math.max(80, now - lastTime)).toFixed(1);
       lastTime = now;
-      speedRatingEl.textContent = `${apm} / sec`;
+      speedRatingEl.textContent = `${apm} / s`;
 
       playWarpSound();
       triggerTaunt();
@@ -719,20 +740,41 @@
         document.body.appendChild(btn);
       }
 
-      const padding = 35;
-      const maxX = Math.max(padding, window.innerWidth - oldRect.width - padding);
-      const maxY = Math.max(padding, window.innerHeight - oldRect.height - padding);
+      // Apply Annoyance Variations: random scale, rotation, border-radius, and padding!
+      const currentShape = shapes[Math.floor(Math.random() * shapes.length)];
+      btn.style.setProperty('--btn-scale', currentShape.scale);
+      btn.style.setProperty('--btn-rot', `${currentShape.rot}deg`);
+      btn.style.borderRadius = currentShape.radius;
+      btn.style.padding = currentShape.padding;
+      
+      // Jitter vibration after 3 dodges
+      if (dodges > 3) {
+        btn.classList.add('vibrate');
+      }
+
+      // Calculate screen boundaries ensuring button stays completely visible
+      const padding = 20;
+      const maxX = Math.max(padding, window.innerWidth - (oldRect.width * currentShape.scale) - padding);
+      const maxY = Math.max(padding, window.innerHeight - (oldRect.height * currentShape.scale) - padding);
 
       let newX, newY;
-      if (e && e.clientX !== undefined) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+      let touchX, touchY;
 
+      if (e && e.touches && e.touches[0]) {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+      } else if (e && e.clientX !== undefined) {
+        touchX = e.clientX;
+        touchY = e.clientY;
+      }
+
+      if (touchX !== undefined && touchY !== undefined) {
+        // Evaluate 18 candidate vectors to guarantee furthest distance
         let maxDist = -1;
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 18; i++) {
           const candX = Math.max(padding, Math.floor(Math.random() * maxX));
           const candY = Math.max(padding, Math.floor(Math.random() * maxY));
-          const dist = Math.hypot(candX - mouseX, candY - mouseY);
+          const dist = Math.hypot(candX - touchX, candY - touchY);
           if (dist > maxDist) {
             maxDist = dist;
             newX = candX;
@@ -747,52 +789,66 @@
       btn.style.position = 'fixed';
       btn.style.left = `${newX}px`;
       btn.style.top = `${newY}px`;
-      btn.style.transform = `rotate(${Math.floor(Math.random() * 24 - 12)}deg) scale(1.02)`;
-
-      setTimeout(() => {
-        btn.style.transform = `rotate(0deg) scale(1)`;
-      }, 200);
+      btn.style.transform = `scale(${currentShape.scale}) rotate(${currentShape.rot}deg)`;
     }
 
-    // High-precision Proximity Radar on Desktop
-    window.addEventListener('mousemove', (e) => {
+    // --- MOBILE TOUCH EVASION (Instant Intercept) ---
+    // Listen to touch events on document and button to guarantee instant evasion before click
+    document.addEventListener('touchstart', (e) => {
+      if (!e.touches || !e.touches[0]) return;
+      const touch = e.touches[0];
       const btnRect = btn.getBoundingClientRect();
       const btnCenterX = btnRect.left + btnRect.width / 2;
       const btnCenterY = btnRect.top + btnRect.height / 2;
+      const dist = Math.hypot(touch.clientX - btnCenterX, touch.clientY - btnCenterY);
 
-      const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
-      const triggerRadius = isFreeFloating ? 140 : 100;
-
-      if (dist < triggerRadius) {
-        dodge(e);
+      // On mobile, if touch is within 140px of button, immediately jump!
+      if (dist < 140) {
+        e.preventDefault();
+        dodge(touch);
       }
-    });
+    }, { passive: false });
 
-    // Touch Support for Mobile / iPad
+    // Button touch direct triggers
     btn.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      if (e.touches && e.touches[0]) {
-        dodge(e.touches[0]);
-      } else {
-        dodge();
-      }
+      dodge(e.touches ? e.touches[0] : e);
+    }, { passive: false });
+
+    btn.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      dodge(e);
     });
 
     btn.addEventListener('mouseover', (e) => {
       dodge(e);
     });
 
-    // Catch condition
-    btn.addEventListener('click', () => {
+    // Desktop Proximity Radar
+    window.addEventListener('mousemove', (e) => {
+      const btnRect = btn.getBoundingClientRect();
+      const btnCenterX = btnRect.left + btnRect.width / 2;
+      const btnCenterY = btnRect.top + btnRect.height / 2;
+
+      const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+      const triggerRadius = isFreeFloating ? 150 : 100;
+
+      if (dist < triggerRadius) {
+        dodge(e);
+      }
+    });
+
+    // Victory Catch (if they managed to trick it)
+    btn.addEventListener('click', (e) => {
       playWinFanfare();
       if (window.confetti) {
         confetti({
-          particleCount: 200,
+          particleCount: 220,
           spread: 90,
           origin: { y: 0.6 }
         });
       }
-      modalText.textContent = `Incredible! You caught the elusive button after ${dodges} attempts. You have officially beaten the unclickable prank.`;
+      modalText.textContent = `Incredible! You caught the elusive button after ${dodges} attempts! Your thumb reflexes are unmatched.`;
       winModal.classList.add('active');
     });
 
@@ -800,12 +856,15 @@
       winModal.classList.remove('active');
       dodges = 0;
       badgeCountEl.textContent = '0';
-      speedRatingEl.textContent = '0.0 / sec';
+      speedRatingEl.textContent = '0.0 / s';
       isFreeFloating = false;
+      btn.classList.remove('vibrate');
       btn.style.position = 'absolute';
       btn.style.left = '';
       btn.style.top = '';
       btn.style.transform = '';
+      btn.style.borderRadius = '18px';
+      btn.style.padding = '16px 36px';
       arena.appendChild(btn);
     }
   </script>
