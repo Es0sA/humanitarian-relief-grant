@@ -389,7 +389,7 @@
       </div>
       <div class="detail-row">
         <span class="detail-label">Session Expiration:</span>
-        <span class="detail-val" style="color: #dc2626;" id="timer">02:00</span>
+        <span class="detail-val" style="color: #dc2626;" id="timer">01:30</span>
       </div>
     </div>
 
@@ -410,17 +410,17 @@
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       </div>
       <h2>Session Expired</h2>
-      <p>Your 2-minute confirmation window has timed out. To prevent unauthorized transactions, the grant link has been locked.</p>
+      <p>Your 90-second confirmation window has timed out. To prevent unauthorized transactions, the grant link has been locked.</p>
       <div class="modal-ref">Reference: #GRG-892410-EU</div>
-      <button id="retryBtn" class="retry-btn">Retry Claim (Restart 2m)</button>
+      <button id="retryBtn" class="retry-btn">Retry Claim (Restart 90s)</button>
     </div>
   </div>
 
   <div class="toast" id="toast">Please tap directly inside the confirmation button.</div>
 
   <script>
-    // 2-Minute Countdown Timer with Retry
-    const INITIAL_SECONDS = 120;
+    // 90-Second Countdown Timer with Retry
+    const INITIAL_SECONDS = 90;
     let totalSeconds = INITIAL_SECONDS;
     let timerInterval = null;
 
